@@ -130,23 +130,28 @@
             font-size: 0.875rem;
         }
 
-        /* Profile Image Container with Glow/Gradient (Blue Theme) */
+        /* Profile Image Container with Glow/Gradient (Updated to rectangular) */
         .profile-img-container {
             position: relative;
-            width: 136px;
-            height: 136px;
-            border-radius: 50%;
+            width: 280px; /* Even bigger width */
+            height: 210px; /* Even bigger height */
+            border-radius: 0.75rem; /* Rounded corners for the container */
             padding: 4px; 
             background: linear-gradient(135deg, var(--primary), var(--secondary), var(--primary-dark));
             box-shadow: 0 0 25px rgba(59, 130, 246, 0.6);
             animation: pulse-glow 3s infinite alternate;
         }
         .profile-img-container img {
+            /* Ensure image fills the container */
+            width: 100%;
+            height: 100%;
             border: 4px solid var(--background);
             transition: transform 0.3s;
+            border-radius: 0.5rem; /* Border radius for the inner image */
+            object-fit: cover; /* Ensures image covers the area without distortion */
         }
         .profile-img-container img:hover {
-            transform: scale(1.05);
+            transform: scale(1.02); /* Less scale-up on hover for rectangular image */
         }
         @keyframes pulse-glow {
             from { box-shadow: 0 0 15px rgba(59, 130, 246, 0.5); }
@@ -219,11 +224,11 @@
                 <!-- Image Side (Left on desktop) -->
                 <div class="md:w-1/3 flex justify-center md:justify-start mb-8 md:mb-0">
                     <div class="profile-img-container">
-                        <!-- Profile Picture Placeholder: REPLACE THE 'src' URL BELOW WITH YOUR ACTUAL PROFILE PICTURE LINK -->
+                        <!-- Updated fallback size to 280x210 -->
                         <img src="girija.jpg" 
-                             onerror="this.onerror=null; this.src='https://placehold.co/128x128/1f2937/ffffff?text=GS';"
+                             onerror="this.onerror=null; this.src='https://placehold.co/280x210/1f2937/ffffff?text=Girija';"
                              alt="Girija Sharma Profile Picture" 
-                             class="w-32 h-32 mx-auto rounded-full shadow-lg object-cover" 
+                             class="shadow-lg" 
                              id="profile-picture">
                     </div>
                 </div>
@@ -329,10 +334,10 @@
                 <a href="mailto:girijasharma7777@gmail.com" class="text-gray-300 hover:text-primary transition duration-150">
                     <i data-lucide="mail" class="w-8 h-8 inline-block"></i>
                 </a>
-                <a href="www.linkedin.com/in/girija-sharma-86b289272" target="_blank" class="text-gray-300 hover:text-primary transition duration-150">
+                <a href="YOUR_LINKEDIN_URL" target="_blank" class="text-gray-300 hover:text-primary transition duration-150" id="linkedin-link">
                     <i data-lucide="linkedin" class="w-8 h-8 inline-block"></i>
                 </a>
-                <a href="YOUR_GITHUB_URL" target="_blank" class="text-gray-300 hover:text-primary transition duration-150">
+                <a href="YOUR_GITHUB_URL" target="_blank" class="text-gray-300 hover:text-primary transition duration-150" id="github-link">
                     <i data-lucide="github" class="w-8 h-8 inline-block"></i>
                 </a>
             </div>
@@ -427,11 +432,14 @@
             window.addEventListener('resize', generateStars);
 
 
-            // Remember to replace these placeholder URLs!
-            const linkedinLink = document.querySelector('a[href="YOUR_LINKEDIN_URL"]');
-            const githubLink = document.querySelector('a[href="YOUR_GITHUB_URL"]');
+            // --- Update Contact URLs ---
+            const linkedinLink = document.getElementById('linkedin-link');
+            const githubLink = document.getElementById('github-link');
             
-            if(linkedinLink) linkedinLink.href = "YOUR_LINKEDIN_URL";
+            // Set provided LinkedIn URL
+            if(linkedinLink) linkedinLink.href = "https://www.linkedin.com/in/girija-sharma-86b289272";
+            
+            // Keep the placeholder for GitHub
             if(githubLink) githubLink.href = "YOUR_GITHUB_URL";
         });
     </script>
